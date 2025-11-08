@@ -673,6 +673,48 @@ grid-template-columns: 1fr !important;
 }
 }
 
+
+/* Mobile Action Button Font Colors */
+.action-btn {
+    color: white !important; /* White text for all buttons */
+    font-weight: 600;
+}
+
+.action-btn i {
+    color: rgb(46, 18, 228) !important; /* White icons */
+}
+
+/* Specific button colors if you want different text colors */
+.action-btn:nth-child(1) { /* Print button */
+    color: rgb(21, 52, 233) !important;
+    background: rgba(255, 255, 255, 0.2) !important;
+}
+
+.action-btn:nth-child(2) { /* Download button */
+    color: rgb(35, 38, 230) !important;
+    background: rgba(255, 255, 255, 0.2) !important;
+}
+
+.action-btn:nth-child(3) { /* Share button */
+    color: rgb(38, 35, 232) !important;
+    background: rgba(255, 255, 255, 0.2) !important;
+}
+
+.pdf-btn-mobile {
+    color: white !important;
+    background: linear-gradient(135deg, #dc3545, #c82333) !important;
+}
+
+/* Hover states */
+.action-btn:hover {
+    color: white !important;
+    background: rgba(255, 255, 255, 0.3) !important;
+}
+
+.pdf-btn-mobile:hover {
+    color: white !important;
+    background: linear-gradient(135deg, #c82333, #dc3545) !important;
+}
         
     </style>
 </head>
