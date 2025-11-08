@@ -580,6 +580,224 @@
             text-decoration: none;
             transform: translateY(-2px);
         }
+
+        /* Mobile Responsiveness Fixes */
+@media (max-width: 768px) {
+    /* Header adjustments */
+    .header {
+        padding: 20px 15px;
+        margin-bottom: 20px;
+    }
+    
+    .header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .header h2 {
+        font-size: 1.2rem;
+    }
+    
+    /* Navigation pills - stack vertically */
+    .nav-pills {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .nav-pills .nav-item {
+        width: 100%;
+        margin: 5px 0;
+    }
+    
+    .nav-pills .nav-link {
+        width: 100%;
+        text-align: center;
+        margin: 2px 0;
+        padding: 12px 15px;
+    }
+    
+    /* Button group - stack vertically */
+    .d-flex.justify-content-center.gap-3 {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px !important;
+    }
+    
+    .btn-custom, .pdf-btn {
+        width: 100%;
+        max-width: 280px;
+        margin: 5px 0;
+    }
+    
+    /* Quick stats - single column */
+    .quick-stats {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    /* Tab content adjustments */
+    .tab-content .row {
+        margin-left: -10px;
+        margin-right: -10px;
+    }
+    
+    .tab-content .col-lg-8,
+    .tab-content .col-lg-4,
+    .tab-content .col-md-6,
+    .tab-content .col-12 {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    
+    /* Card adjustments */
+    .card {
+        margin-bottom: 15px;
+    }
+    
+    /* Chart containers */
+    .chart-container {
+        height: 200px;
+    }
+    
+    /* Modal adjustments */
+    .modal-dialog {
+        margin: 10px;
+    }
+    
+    /* PDF modal specific fixes */
+    #pdfModal .modal-dialog {
+        max-width: 95%;
+    }
+    
+    /* Section headers */
+    .section-header {
+        padding: 15px;
+        margin: 20px 0 15px;
+    }
+    
+    /* Stat values in cards */
+    .stat-value {
+        font-size: 1.8rem;
+    }
+    
+    /* In qualitative tab - stack columns */
+    .qualitative-tab .row > div {
+        margin-bottom: 15px;
+    }
+    
+    /* Fix for the navigation tabs container */
+    #reportTabs {
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+    }
+    
+    /* Alternative: If you prefer horizontal scrolling for nav pills instead of stacking */
+    .nav-pills.horizontal-scroll {
+        flex-direction: row;
+        overflow-x: auto;
+        padding-bottom: 10px;
+    }
+    
+    .nav-pills.horizontal-scroll .nav-item {
+        flex: 0 0 auto;
+        margin: 0 5px;
+    }
+    
+    /* Ensure text doesn't overflow in buttons */
+    .btn-custom, .pdf-btn, .nav-link {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    
+    /* Fix for the logo container */
+    .logo-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .logo {
+        font-size: 2.5rem;
+    }
+}
+
+/* Extra small devices */
+@media (max-width: 576px) {
+    .header h1 {
+        font-size: 1.5rem;
+    }
+    
+    .header h2 {
+        font-size: 1rem;
+    }
+    
+    .header p {
+        font-size: 0.9rem;
+    }
+    
+    .date-badge {
+        font-size: 0.8rem;
+    }
+    
+    .stat-value {
+        font-size: 1.5rem;
+    }
+    
+    .stat-label {
+        font-size: 0.85rem;
+    }
+    
+    .card-title {
+        font-size: 1.1rem;
+    }
+    
+    .chart-container {
+        height: 180px;
+    }
+    
+    /* Make sure all buttons are easily tappable */
+    .btn-custom, .pdf-btn, .nav-link {
+        min-height: 44px; /* Minimum touch target size */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+/* Fix for horizontal layout preference */
+@media (max-width: 768px) {
+    /* If you want to keep horizontal nav with scrolling */
+    #reportTabs {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 10px;
+    }
+    
+    #reportTabs .nav-item {
+        flex-shrink: 0;
+    }
+    
+    /* Button container */
+    .header .d-flex.justify-content-center.gap-3 {
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        padding-bottom: 10px;
+    }
+    
+    .header .d-flex.justify-content-center.gap-3 .btn {
+        flex-shrink: 0;
+    }
+}
+
+/* Print media query adjustment */
+@media print and (max-width: 768px) {
+    .nav-pills, .btn-custom, .pdf-btn {
+        display: none !important;
+    }
+}
     </style>
 </head>
 <body>
@@ -1940,6 +2158,35 @@
             XLSX.utils.book_append_sheet(wb, ws, "Soweto Final Report");
             XLSX.writeFile(wb, "Water_Wise_Soweto_Final_Report.xlsx");
         }
+
+        // Mobile-specific enhancements
+function enhanceMobileExperience() {
+    if (window.innerWidth <= 768) {
+        // Add horizontal scroll class to nav pills
+        document.getElementById('reportTabs').classList.add('horizontal-scroll');
+        
+        // Add touch-friendly class to buttons
+        document.querySelectorAll('.btn-custom, .pdf-btn, .nav-link').forEach(btn => {
+            btn.classList.add('touch-target');
+        });
+        
+        // Adjust chart sizes for mobile
+        Object.values(chartInstances).forEach(chart => {
+            if (chart) {
+                chart.resize();
+            }
+        });
+    }
+}
+
+// Call on load and resize
+document.addEventListener('DOMContentLoaded', function() {
+    enhanceMobileExperience();
+});
+
+window.addEventListener('resize', function() {
+    enhanceMobileExperience();
+});
     </script>
 </body>
 </html>
