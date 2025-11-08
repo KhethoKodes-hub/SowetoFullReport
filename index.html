@@ -527,7 +527,7 @@
             background: linear-gradient(135deg, var(--danger-red), #c82333);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.3);
-            color: rgb(21, 20, 20);
+            color: white;
             padding: 10px 20px;
             border-radius: 30px;
             font-weight: 600;
@@ -582,7 +582,96 @@
         }
 
 
-        
+        @media (max-width: 576px) {
+.nav-pills {
+flex-direction: column !important;
+align-items: center;
+}
+.nav-pills .nav-item {
+width: 100%;
+margin-bottom: 10px;
+}
+.nav-pills .nav-link {
+width: 100%;
+padding: 12px 20px;
+font-size: 1rem !important;
+color: rgb(27, 39, 212) !important;
+background: rgba(255, 255, 255, 0.2) !important;
+border: 1px solid rgba(255, 255, 255, 0.3) !important;
+display: flex !important;
+align-items: center !important;
+justify-content: center !important;
+gap: 8px !important;
+opacity: 1 !important;
+visibility: visible !important;
+}
+.nav-pills .nav-link i {
+font-size: 1.2rem !important;
+color: white !important;
+}
+.nav-pills .nav-link.active {
+background: rgba(255, 255, 255, 0.4) !important;
+}
+.d-flex.justify-content-center.gap-3.flex-wrap.mt-3 {
+flex-direction: column;
+gap: 10px !important;
+}
+.btn-custom, .pdf-btn {
+width: 100%;
+padding: 12px !important;
+font-size: 1rem !important;
+display: flex !important;
+align-items: center !important;
+justify-content: center !important;
+gap: 8px !important;
+}
+.pdf-btn {
+background: linear-gradient(135deg, var(--danger-red), #c82333) !important;
+color: white !important;
+}
+.btn-custom i, .pdf-btn i {
+font-size: 1.2rem !important;
+}
+.header {
+padding: 20px 15px;
+}
+.header h1 {
+font-size: 1.8rem;
+}
+.header h2 {
+font-size: 1.3rem;
+}
+.header p {
+font-size: 1rem;
+}
+.logo-container {
+flex-direction: row;
+justify-content: center;
+}
+.logo {
+font-size: 2rem;
+}
+.date-badge {
+font-size: 0.85rem;
+padding: 8px 16px;
+}
+/* Ensure no skeleton or hidden elements */
+.skeleton {
+display: none !important;
+}
+}
+@media (max-width: 768px) {
+.nav-pills {
+flex-direction: column !important;
+}
+.nav-pills .nav-link {
+justify-content: center !important;
+gap: 10px !important;
+}
+.quick-stats {
+grid-template-columns: 1fr !important;
+}
+}
 
         
     </style>
