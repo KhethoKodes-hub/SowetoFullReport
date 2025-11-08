@@ -696,7 +696,7 @@ grid-template-columns: 1fr !important;
 }
 
 .action-btn:nth-child(3) { /* Share button */
-    color: rgb(38, 35, 232) !important;
+    color: rgb(255, 255, 255) !important;
     background: rgba(255, 255, 255, 0.2) !important;
 }
 
@@ -715,28 +715,26 @@ grid-template-columns: 1fr !important;
     color: white !important;
     background: linear-gradient(135deg, #c82333, #dc3545) !important;
 }
+
+/* Quick Fix - Only Font Color */
+@media (max-width: 768px) {
+    .btn-custom {
+        color: var(--primary-blue) !important;
+    }
+    
+    .btn-custom i {
+        color: var(--primary-blue) !important;
+    }
+    
+    .pdf-btn {
+        color: var(--danger-red) !important;
+    }
+    
+    .pdf-btn i {
+        color: var(--danger-red) !important;
+    }
+}
         
-/* Different colors for each button */
-#printBtnMobile {
-    color: #ffffff !important;
-    background: #007bff !important; /* Blue */
-}
-
-#downloadBtnMobile {
-    color: #ffffff !important;
-    background: #28a745 !important; /* Green */
-}
-
-#shareBtnMobile {
-    color: #ffffff !important;
-    background: #ffc107 !important; /* Yellow */
-    color: #000000 !important; /* Black text for yellow background */
-}
-
-.pdf-btn-mobile {
-    color: #ffffff !important;
-    background: #dc3545 !important; /* Red */
-}
     </style>
 </head>
 <body>
