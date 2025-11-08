@@ -581,170 +581,127 @@
             transform: translateY(-2px);
         }
 
-        /* Mobile Navigation Fix */
+
+        @media (max-width: 576px) {
+.header {
+padding: 20px;
+}
+.header h1 {
+font-size: 1.5rem;
+}
+.header h2 {
+font-size: 1.2rem;
+}
+.header p {
+font-size: 0.9rem;
+}
+.date-badge {
+font-size: 0.8rem;
+padding: 6px 15px;
+}
+.quick-stats {
+grid-template-columns: 1fr;
+gap: 15px;
+}
+.stat-card {
+padding: 15px;
+}
+.stat-icon {
+font-size: 2rem;
+margin-bottom: 10px;
+}
+.stat-value {
+font-size: 2rem;
+}
+.stat-label {
+font-size: 0.85rem;
+}
+.nav-pills .nav-link {
+margin: 2px;
+padding: 5px 10px;
+font-size: 0.8rem;
+}
+.section-header {
+margin: 20px 0 10px;
+padding: 15px;
+}
+.section-header h2 {
+font-size: 1.3rem;
+}
+.section-header p {
+font-size: 0.9rem;
+}
+.card {
+border-radius: 15px;
+}
+.card-title {
+font-size: 1rem;
+margin-bottom: 15px;
+}
+.chart-container {
+height: 200px;
+}
+.card-body {
+padding: 15px;
+}
+.insights-list li, .solutions-list li {
+padding: 8px 0;
+font-size: 0.9rem;
+}
+.btn-custom, .pdf-btn {
+padding: 8px 15px;
+font-size: 0.9rem;
+}
+.row.g-4 {
+row-gap: 15px;
+}
+/* Adjust modal for mobile */
+.modal-dialog {
+margin: 0.5rem;
+}
+.modal-content {
+border-radius: 15px;
+}
+/* Hide animations on mobile for performance */
+.water-drop {
+display: none;
+}
+@keyframes float, pulse, shimmer, slideInDown {
+from, to {
+transform: none;
+opacity: 1;
+}
+}
+}
 @media (max-width: 768px) {
-    /* Make navigation tabs more prominent and accessible */
-    .nav-pills {
-        display: flex;
-        flex-direction: row;
-        overflow-x: auto;
-        overflow-y: hidden;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-        -ms-overflow-style: none;
-        padding-bottom: 15px;
-        margin-bottom: 10px;
-        border-bottom: 2px solid rgba(255, 255, 255, 0.2);
-        white-space: nowrap;
-        width: 100%;
-    }
-    
-    .nav-pills::-webkit-scrollbar {
-        display: none;
-    }
-    
-    .nav-pills .nav-item {
-        flex: 0 0 auto;
-        margin: 0 8px 0 0;
-    }
-    
-    .nav-pills .nav-link {
-        background: rgba(255, 255, 255, 0.25) !important;
-        backdrop-filter: blur(10px);
-        border: 2px solid rgba(255, 255, 255, 0.4) !important;
-        color: white !important;
-        font-weight: 600;
-        padding: 12px 20px;
-        border-radius: 25px !important;
-        min-width: 140px;
-        text-align: center;
-        font-size: 0.9rem;
-        transition: all 0.3s ease;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 5px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    }
-    
-    .nav-pills .nav-link i {
-        font-size: 1.2rem;
-        margin-bottom: 2px;
-    }
-    
-    .nav-pills .nav-link.active {
-        background: rgba(255, 255, 255, 0.4) !important;
-        border: 2px solid white !important;
-        box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
-        transform: scale(1.05);
-    }
-    
-    .nav-pills .nav-link:hover {
-        background: rgba(255, 255, 255, 0.35) !important;
-        transform: translateY(-2px);
-    }
-    
-    /* Action buttons styling */
-    .header .d-flex.justify-content-center.gap-3 {
-        display: grid !important;
-        grid-template-columns: 1fr 1fr;
-        gap: 10px !important;
-        width: 100%;
-        margin-top: 15px;
-    }
-    
-    .btn-custom, .pdf-btn {
-        width: 100%;
-        margin: 0;
-        padding: 12px 15px;
-        font-size: 0.9rem;
-        min-height: 50px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 8px;
-        border-radius: 25px;
-    }
-    
-    .pdf-btn {
-        grid-column: 1 / -1;
-        order: -1; /* Make PDF button appear first */
-        background: linear-gradient(135deg, #dc3545, #c82333) !important;
-        border: 2px solid rgba(255, 255, 255, 0.5) !important;
-        font-weight: 700;
-        font-size: 1rem;
-    }
-    
-    /* Make the active tab more obvious */
-    .nav-pills .nav-link.active::after {
-        content: '';
-        position: absolute;
-        bottom: -17px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 6px;
-        height: 6px;
-        background: white;
-        border-radius: 50%;
-        animation: pulse 2s infinite;
-    }
-    
-    /* Header adjustments for better spacing */
-    .header {
-        padding: 25px 15px;
-    }
-    
-    .header h1 {
-        font-size: 1.8rem;
-        margin-bottom: 15px;
-    }
-    
-    .header h2 {
-        font-size: 1.1rem;
-        margin-bottom: 15px;
-    }
-    
-    /* Add visual indicator for scrollable navigation */
-    .nav-pills::after {
-        content: '← scroll →';
-        position: absolute;
-        bottom: 5px;
-        left: 50%;
-        transform: translateX(-50%);
-        color: rgba(255, 255, 255, 0.7);
-        font-size: 0.7rem;
-        font-weight: 500;
-        pointer-events: none;
-    }
+/* Existing styles, plus adjustments */
+.quick-stats {
+grid-template-columns: 1fr;
+}
+.logo {
+font-size: 2.5rem;
+}
+.logo-container {
+flex-direction: column;
+gap: 10px;
+}
+.d-flex.justify-content-center.gap-3 {
+flex-direction: column;
+}
+.nav-pills {
+flex-direction: column;
+}
+.nav-pills .nav-item {
+width: 100%;
+margin-bottom: 5px;
+}
+.nav-pills .nav-link {
+width: 100%;
+margin: 0;
+}
 }
 
-/* Extra small devices (phones) */
-@media (max-width: 576px) {
-    .nav-pills .nav-link {
-        min-width: 120px;
-        padding: 10px 15px;
-        font-size: 0.85rem;
-    }
-    
-    .nav-pills .nav-link i {
-        font-size: 1rem;
-    }
-    
-    .header .d-flex.justify-content-center.gap-3 {
-        grid-template-columns: 1fr;
-    }
-    
-    .btn-custom, .pdf-btn {
-        min-height: 45px;
-        font-size: 0.85rem;
-    }
-    
-    .header h1 {
-        font-size: 1.6rem;
-    }
-}
-
-
+        
     </style>
 </head>
 <body>
