@@ -8,7 +8,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="icon" href="assets/randwaterLogo.jpg" type="image/x-icon">
     <style>
         * {
             margin: 0;
@@ -522,233 +521,63 @@
             }
         }
 
-        /* NEW ENHANCEMENTS */
-
-        /* Floating Action Button */
-        .fab {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: var(--primary-blue);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-            cursor: pointer;
-            z-index: 1000;
-            transition: all 0.3s ease;
-        }
-
-        .fab:hover {
-            transform: scale(1.1);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-        }
-
-        /* Dark Mode Toggle */
-        .dark-mode-toggle {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1000;
-        }
-
-        /* Data Filter Controls */
-        .filter-controls {
-            background: rgba(255, 255, 255, 0.1);
+        /* NEW: PDF Button Styles */
+        .pdf-btn {
+            background: linear-gradient(135deg, var(--danger-red), #c82333);
             backdrop-filter: blur(10px);
-            border-radius: 15px;
-            padding: 20px;
-            margin-bottom: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        /* Interactive Map */
-        .map-container {
-            height: 400px;
-            border-radius: 15px;
-            overflow: hidden;
-            background: var(--light-blue);
-            position: relative;
-        }
-
-        /* Timeline Component */
-        .timeline {
-            position: relative;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .timeline::after {
-            content: '';
-            position: absolute;
-            width: 6px;
-            background-color: var(--primary-blue);
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            margin-left: -3px;
-        }
-
-        /* Data Table Enhancement */
-        .data-table {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
-        }
-
-        .data-table th {
-            background: var(--primary-blue);
+            border: 1px solid rgba(255, 255, 255, 0.3);
             color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
             font-weight: 600;
-        }
-
-        /* Chart Export Controls */
-        .chart-export {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            z-index: 10;
-        }
-
-        /* Progress Tracking */
-        .progress-tracking {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 15px;
-            padding: 20px;
-            margin-bottom: 20px;
-        }
-
-        /* Interactive Legend */
-        .chart-legend {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 15px;
-        }
-
-        .legend-item {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            cursor: pointer;
-        }
-
-        .legend-color {
-            width: 15px;
-            height: 15px;
-            border-radius: 3px;
-        }
-
-        /* Enhanced Tooltips */
-        .enhanced-tooltip {
-            position: absolute;
-            background: rgba(0, 0, 0, 0.9);
-            color: white;
-            padding: 10px 15px;
-            border-radius: 8px;
-            font-size: 0.9rem;
-            pointer-events: none;
-            z-index: 1000;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        /* Loading Spinner */
-        .spinner {
-            width: 40px;
-            height: 40px;
-            border: 4px solid rgba(0, 102, 204, 0.3);
-            border-left: 4px solid var(--primary-blue);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin: 20px auto;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* Notification Badge */
-        .notification-badge {
-            position: absolute;
-            top: -5px;
-            right: -5px;
-            background: var(--danger-red);
-            color: white;
-            border-radius: 50%;
-            width: 20px;
-            height: 20px;
-            font-size: 0.7rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* Wave Animation */
-        .wave {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 100px;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" fill="%230066cc"/><path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" fill="%230066cc"/><path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="%230066cc"/></svg>');
-            background-size: cover;
-            animation: wave 10s linear infinite;
-        }
-
-        @keyframes wave {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-100px); }
-        }
-
-        /* Interactive Data Points */
-        .data-point {
-            position: absolute;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: var(--accent-teal);
-            cursor: pointer;
             transition: all 0.3s ease;
         }
 
-        .data-point:hover {
-            transform: scale(1.5);
-            box-shadow: 0 0 10px var(--accent-teal);
+        .pdf-btn:hover {
+            background: linear-gradient(135deg, #c82333, var(--danger-red));
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(220, 53, 69, 0.3);
         }
 
-        /* Comparison Slider */
-        .comparison-slider {
-            position: relative;
+        /* PDF Preview Modal */
+        .pdf-preview {
+            height: 80vh;
             width: 100%;
-            height: 400px;
-            border-radius: 15px;
-            overflow: hidden;
+            border: none;
+            border-radius: 10px;
         }
 
-        .comparison-slider img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            position: absolute;
-            top: 0;
+        .pdf-placeholder {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 40px;
+            text-align: center;
+            margin: 20px 0;
         }
 
-        .slider-handle {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            width: 4px;
-            background: white;
-            cursor: col-resize;
-            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+        .pdf-icon {
+            font-size: 4rem;
+            color: var(--danger-red);
+            margin-bottom: 20px;
+        }
+
+        .pdf-download-link {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: var(--primary-blue);
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .pdf-download-link:hover {
+            background: var(--dark-blue);
+            color: white;
+            text-decoration: none;
+            transform: translateY(-2px);
         }
     </style>
 </head>
@@ -758,18 +587,6 @@
 
     <!-- Toast Container -->
     <div class="toast-container" id="toastContainer"></div>
-
-    <!-- Dark Mode Toggle -->
-    <div class="dark-mode-toggle">
-        <button class="btn btn-custom" id="darkModeToggle" data-bs-toggle="tooltip" title="Toggle Dark Mode">
-            <i class="fas fa-moon"></i>
-        </button>
-    </div>
-
-    <!-- Floating Action Button -->
-    <div class="fab" id="fab" data-bs-toggle="tooltip" title="Quick Actions">
-        <i class="fas fa-bolt"></i>
-    </div>
 
     <div class="dashboard container-fluid py-4">
         <div class="header">
@@ -816,6 +633,10 @@
                 </button>
                 <button class="btn btn-custom" id="shareBtn" data-bs-toggle="modal" data-bs-target="#shareModal" data-bs-toggle="tooltip" title="Share this report">
                     <i class="fas fa-share-alt"></i> Share Report
+                </button>
+                <!-- NEW: PDF Report Button -->
+                <button class="btn pdf-btn" id="pdfBtn" data-bs-toggle="modal" data-bs-target="#pdfModal" data-bs-toggle="tooltip" title="View or Download Full PDF Report">
+                    <i class="fas fa-file-pdf"></i> Full PDF Report
                 </button>
             </div>
         </div>
@@ -872,11 +693,6 @@
                                 <div class="card-title">Project Timeline & Key Milestones</div>
                                 <div class="chart-container">
                                     <canvas id="timelineChart"></canvas>
-                                    <div class="chart-export">
-                                        <button class="btn btn-sm btn-outline-primary" onclick="exportChart('timelineChart')">
-                                            <i class="fas fa-download"></i>
-                                        </button>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -888,11 +704,6 @@
                                 <div class="card-title">Data Collection Summary</div>
                                 <div class="chart-container">
                                     <canvas id="dataCollectionChart"></canvas>
-                                    <div class="chart-export">
-                                        <button class="btn btn-sm btn-outline-primary" onclick="exportChart('dataCollectionChart')">
-                                            <i class="fas fa-download"></i>
-                                        </button>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -904,11 +715,6 @@
                                 <div class="card-title">Community Engagement Metrics</div>
                                 <div class="chart-container">
                                     <canvas id="engagementChart"></canvas>
-                                    <div class="chart-export">
-                                        <button class="btn btn-sm btn-outline-primary" onclick="exportChart('engagementChart')">
-                                            <i class="fas fa-download"></i>
-                                        </button>
-                                    </div>
                                 </div>
                                 <div class="row text-center mt-3 pt-3 border-top">
                                     <div class="col-4">
@@ -952,38 +758,6 @@
                     <p>Data-driven insights and trends from household surveys</p>
                 </div>
 
-                <!-- Filter Controls -->
-                <div class="filter-controls">
-                    <div class="row g-3">
-                        <div class="col-md-4">
-                            <label class="form-label text-white">Filter by Area</label>
-                            <select class="form-select" id="areaFilter">
-                                <option value="all">All Areas</option>
-                                <option value="soweto">Soweto Central</option>
-                                <option value="soweto-east">Soweto East</option>
-                                <option value="soweto-west">Soweto West</option>
-                            </select>
-                        </div>
-                        <div class="col-md-4">
-                            <label class="form-label text-white">Filter by Date Range</label>
-                            <select class="form-select" id="dateFilter">
-                                <option value="all">All Dates</option>
-                                <option value="week1">Week 1</option>
-                                <option value="week2">Week 2</option>
-                                <option value="week3">Week 3</option>
-                            </select>
-                        </div>
-                        <div class="col-md-4">
-                            <label class="form-label text-white">Data Type</label>
-                            <select class="form-select" id="dataTypeFilter">
-                                <option value="all">All Data</option>
-                                <option value="surveys">Surveys Only</option>
-                                <option value="interviews">Interviews Only</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-
                 <div class="row g-4">
                     <div class="col-md-6 col-lg-4">
                         <div class="card">
@@ -991,11 +765,6 @@
                                 <div class="card-title">Household Size Distribution</div>
                                 <div class="chart-container">
                                     <canvas id="householdChart"></canvas>
-                                    <div class="chart-export">
-                                        <button class="btn btn-sm btn-outline-primary" onclick="exportChart('householdChart')">
-                                            <i class="fas fa-download"></i>
-                                        </button>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -1007,11 +776,6 @@
                                 <div class="card-title">Dwelling Types</div>
                                 <div class="chart-container">
                                     <canvas id="dwellingChart"></canvas>
-                                    <div class="chart-export">
-                                        <button class="btn btn-sm btn-outline-primary" onclick="exportChart('dwellingChart')">
-                                            <i class="fas fa-download"></i>
-                                        </button>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -1023,11 +787,6 @@
                                 <div class="card-title">Property Ownership</div>
                                 <div class="chart-container">
                                     <canvas id="ownershipChart"></canvas>
-                                    <div class="chart-export">
-                                        <button class="btn btn-sm btn-outline-primary" onclick="exportChart('ownershipChart')">
-                                            <i class="fas fa-download"></i>
-                                        </button>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -1039,11 +798,6 @@
                                 <div class="card-title">Water Meter Access</div>
                                 <div class="chart-container">
                                     <canvas id="meterChart"></canvas>
-                                    <div class="chart-export">
-                                        <button class="btn btn-sm btn-outline-primary" onclick="exportChart('meterChart')">
-                                            <i class="fas fa-download"></i>
-                                        </button>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -1055,11 +809,6 @@
                                 <div class="card-title">Water Shortage Frequency</div>
                                 <div class="chart-container">
                                     <canvas id="shortageChart"></canvas>
-                                    <div class="chart-export">
-                                        <button class="btn btn-sm btn-outline-primary" onclick="exportChart('shortageChart')">
-                                            <i class="fas fa-download"></i>
-                                        </button>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -1071,11 +820,6 @@
                                 <div class="card-title">Infrastructure Rating</div>
                                 <div class="chart-container">
                                     <canvas id="infrastructureChart"></canvas>
-                                    <div class="chart-export">
-                                        <button class="btn btn-sm btn-outline-primary" onclick="exportChart('infrastructureChart')">
-                                            <i class="fas fa-download"></i>
-                                        </button>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -1087,11 +831,6 @@
                                 <div class="card-title">Water-Saving Devices Usage</div>
                                 <div class="chart-container">
                                     <canvas id="devicesChart"></canvas>
-                                    <div class="chart-export">
-                                        <button class="btn btn-sm btn-outline-primary" onclick="exportChart('devicesChart')">
-                                            <i class="fas fa-download"></i>
-                                        </button>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -1103,11 +842,6 @@
                                 <div class="card-title">Garden Watering Methods</div>
                                 <div class="chart-container">
                                     <canvas id="gardenChart"></canvas>
-                                    <div class="chart-export">
-                                        <button class="btn btn-sm btn-outline-primary" onclick="exportChart('gardenChart')">
-                                            <i class="fas fa-download"></i>
-                                        </button>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -1119,11 +853,6 @@
                                 <div class="card-title">Water Conservation Education</div>
                                 <div class="chart-container">
                                     <canvas id="educationChart"></canvas>
-                                    <div class="chart-export">
-                                        <button class="btn btn-sm btn-outline-primary" onclick="exportChart('educationChart')">
-                                            <i class="fas fa-download"></i>
-                                        </button>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -1135,11 +864,6 @@
                                 <div class="card-title">Community Willingness & Engagement</div>
                                 <div class="chart-container">
                                     <canvas id="willingnessChart"></canvas>
-                                    <div class="chart-export">
-                                        <button class="btn btn-sm btn-outline-primary" onclick="exportChart('willingnessChart')">
-                                            <i class="fas fa-download"></i>
-                                        </button>
-                                    </div>
                                 </div>
                                 <div class="row text-center mt-3 pt-3 border-top">
                                     <div class="col-4">
@@ -1195,11 +919,6 @@
                                 <div class="card-title">Communication Gaps</div>
                                 <div class="chart-container">
                                     <canvas id="communicationChart"></canvas>
-                                    <div class="chart-export">
-                                        <button class="btn btn-sm btn-outline-primary" onclick="exportChart('communicationChart')">
-                                            <i class="fas fa-download"></i>
-                                        </button>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -1226,11 +945,6 @@
                                 <div class="card-title">Water Wise Summit Insights</div>
                                 <div class="chart-container">
                                     <canvas id="summitChart"></canvas>
-                                    <div class="chart-export">
-                                        <button class="btn btn-sm btn-outline-primary" onclick="exportChart('summitChart')">
-                                            <i class="fas fa-download"></i>
-                                        </button>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -1297,11 +1011,6 @@
                                 <div class="card-title">Implementation Timeline</div>
                                 <div class="chart-container">
                                     <canvas id="implementationChart"></canvas>
-                                    <div class="chart-export">
-                                        <button class="btn btn-sm btn-outline-primary" onclick="exportChart('implementationChart')">
-                                            <i class="fas fa-download"></i>
-                                        </button>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -1338,11 +1047,6 @@
                                 <div class="card-title">Expected Impact Metrics</div>
                                 <div class="chart-container">
                                     <canvas id="impactChart"></canvas>
-                                    <div class="chart-export">
-                                        <button class="btn btn-sm btn-outline-primary" onclick="exportChart('impactChart')">
-                                            <i class="fas fa-download"></i>
-                                        </button>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -1378,29 +1082,73 @@
         </div>
     </div>
 
-    <!-- FAB Menu -->
-    <div class="modal fade" id="fabMenu" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
+    <!-- NEW: PDF Report Modal -->
+    <div class="modal fade" id="pdfModal" tabindex="-1" aria-labelledby="pdfModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Quick Actions</h5>
+                    <h5 class="modal-title" id="pdfModalLabel"><i class="fas fa-file-pdf"></i> Full PDF Report</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <div class="d-grid gap-2">
-                        <button class="btn btn-outline-primary" onclick="scrollToTop()">
-                            <i class="fas fa-arrow-up"></i> Scroll to Top
-                        </button>
-                        <button class="btn btn-outline-success" onclick="toggleFullScreen()">
-                            <i class="fas fa-expand"></i> Toggle Fullscreen
-                        </button>
-                        <button class="btn btn-outline-info" onclick="toggleDataLabels()">
-                            <i class="fas fa-chart-bar"></i> Toggle Data Labels
-                        </button>
-                        <button class="btn btn-outline-warning" onclick="resetFilters()">
-                            <i class="fas fa-filter"></i> Reset Filters
-                        </button>
+                    <div class="alert alert-info">
+                        <i class="fas fa-info-circle"></i> View the complete Water Wise Soweto Outreach Final Report in PDF format. You can view it directly in your browser or download it for offline access.
                     </div>
+                    
+                    <div class="pdf-placeholder">
+                        <div class="pdf-icon">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <h3>Water Wise Soweto Outreach - Final Report</h3>
+                        <p class="text-muted">Complete PDF Document (24 pages)</p>
+                        <p>This comprehensive report includes all data analysis, community feedback, recommendations, and implementation plans from the Soweto Water Wise Outreach initiative.</p>
+                        
+                        <div class="d-flex justify-content-center gap-3 mt-4 flex-wrap">
+                            <button class="btn btn-primary" onclick="viewPDF()">
+                                <i class="fas fa-eye"></i> View PDF in Browser
+                            </button>
+                            <button class="btn btn-success" onclick="downloadPDF()">
+                                <i class="fas fa-download"></i> Download PDF
+                            </button>
+                        </div>
+                        
+                        <div class="mt-4">
+                            <h5>Report Contents:</h5>
+                            <ul class="list-group">
+                                <li class="list-group-item">Executive Summary</li>
+                                <li class="list-group-item">Project Methodology</li>
+                                <li class="list-group-item">Quantitative Data Analysis</li>
+                                <li class="list-group-item">Qualitative Community Insights</li>
+                                <li class="list-group-item">Water Wise Summit Findings</li>
+                                <li class="list-group-item">Strategic Recommendations</li>
+                                <li class="list-group-item">Implementation Roadmap</li>
+                                <li class="list-group-item">Appendices & Raw Data</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- PDF Preview Section (hidden by default) -->
+                    <div id="pdfPreview" class="mt-4" style="display: none;">
+                        <h5>PDF Preview</h5>
+                        <div class="alert alert-warning">
+                            <i class="fas fa-exclamation-triangle"></i> Note: This is a placeholder preview.
+                        <div class="text-center p-4 border rounded bg-light">
+                            <i class="fas fa-file-pdf fa-5x text-danger mb-3"></i>
+                            <h4>Water_Wise_Soweto_Outreach_Final_Report.pdf</h4>
+                            <p class="text-muted">File size: 4.2 MB | Last updated: November 08, 2025</p>
+                            <div class="mt-3">
+                                <a href="#" class="pdf-download-link" onclick="downloadPDF()">
+                                    <i class="fas fa-download"></i> Download Full PDF
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="downloadPDF()">
+                        <i class="fas fa-download"></i> Download PDF
+                    </button>
                 </div>
             </div>
         </div>
@@ -1495,81 +1243,27 @@
             });
         }
 
-        // NEW ENHANCEMENT FUNCTIONS
-
-        // Dark Mode Toggle
-        function toggleDarkMode() {
-            document.body.classList.toggle('dark-mode');
-            const icon = document.querySelector('#darkModeToggle i');
-            if (document.body.classList.contains('dark-mode')) {
-                icon.classList.remove('fa-moon');
-                icon.classList.add('fa-sun');
-                document.body.style.background = 'linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)';
-            } else {
-                icon.classList.remove('fa-sun');
-                icon.classList.add('fa-moon');
-                document.body.style.background = 'linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%)';
-            }
+        // NEW: PDF Functions
+        function viewPDF() {
+            // In a real implementation, this would open the actual PDF
+            document.getElementById('pdfPreview').style.display = 'block';
+            showToast('Opening PDF preview...');
+            
+            // Scroll to the preview section
+            document.getElementById('pdfPreview').scrollIntoView({ behavior: 'smooth' });
         }
 
-        // Chart Export
-        function exportChart(chartId) {
-            const chart = chartInstances[chartId];
-            if (chart) {
-                const link = document.createElement('a');
-                link.download = `${chartId}.png`;
-                link.href = chart.toBase64Image();
-                link.click();
-                showToast(`Chart ${chartId} exported successfully!`);
-            }
+         function downloadPDF() {
+            const link = document.createElement('a');
+            link.href = '/assets/SowetoFullReportOutreach-Rand Water x Water Wise.pdf';
+            link.download = 'Soweto-Water-Wise-Outreach-Report.pdf';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
         }
-
-        // FAB Menu
-        function openFabMenu() {
-            const fabMenu = new bootstrap.Modal(document.getElementById('fabMenu'));
-            fabMenu.show();
-        }
-
-        // Scroll to Top
-        function scrollToTop() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-            bootstrap.Modal.getInstance(document.getElementById('fabMenu')).hide();
-        }
-
-        // Toggle Fullscreen
-        function toggleFullScreen() {
-            if (!document.fullscreenElement) {
-                document.documentElement.requestFullscreen();
-            } else {
-                if (document.exitFullscreen) {
-                    document.exitFullscreen();
-                }
-            }
-            bootstrap.Modal.getInstance(document.getElementById('fabMenu')).hide();
-        }
-
-        // Toggle Data Labels
-        function toggleDataLabels() {
-            Object.values(chartInstances).forEach(chart => {
-                if (chart.options.plugins.datalabels) {
-                    chart.options.plugins.datalabels.display = !chart.options.plugins.datalabels.display;
-                } else {
-                    if (!chart.options.plugins) chart.options.plugins = {};
-                    chart.options.plugins.datalabels = { display: true };
-                }
-                chart.update();
-            });
-            bootstrap.Modal.getInstance(document.getElementById('fabMenu')).hide();
-            showToast('Data labels toggled');
-        }
-
-        // Reset Filters
-        function resetFilters() {
-            document.getElementById('areaFilter').value = 'all';
-            document.getElementById('dateFilter').value = 'all';
-            document.getElementById('dataTypeFilter').value = 'all';
-            bootstrap.Modal.getInstance(document.getElementById('fabMenu')).hide();
-            showToast('Filters reset to default');
+        
+        function openPDF() {
+            window.open('/assets/SowetoFullReportOutreach-Rand Water x Water Wise.pdf', '_blank');
         }
 
         // Keyboard shortcuts
@@ -1582,13 +1276,11 @@
                 e.preventDefault();
                 downloadExcel();
             }
-            if (e.altKey && e.key === 'm') {
-                e.preventDefault();
-                toggleDarkMode();
-            }
             if (e.altKey && e.key === 'f') {
                 e.preventDefault();
-                openFabMenu();
+                // Open PDF modal with keyboard shortcut
+                const pdfModal = new bootstrap.Modal(document.getElementById('pdfModal'));
+                pdfModal.show();
             }
         });
 
@@ -1643,29 +1335,7 @@
                 downloadExcel();
                 showToast('Downloading Excel file...');
             });
-
-            // NEW: Dark mode toggle
-            document.getElementById('darkModeToggle').addEventListener('click', toggleDarkMode);
-
-            // NEW: FAB click handler
-            document.getElementById('fab').addEventListener('click', openFabMenu);
-
-            // NEW: Filter change handlers
-            document.getElementById('areaFilter').addEventListener('change', updateCharts);
-            document.getElementById('dateFilter').addEventListener('change', updateCharts);
-            document.getElementById('dataTypeFilter').addEventListener('change', updateCharts);
         });
-
-        // Update charts based on filters
-        function updateCharts() {
-            const areaFilter = document.getElementById('areaFilter').value;
-            const dateFilter = document.getElementById('dateFilter').value;
-            const dataTypeFilter = document.getElementById('dataTypeFilter').value;
-            
-            // In a real application, you would fetch new data based on filters
-            // For this demo, we'll just show a toast
-            showToast(`Filters applied: ${areaFilter}, ${dateFilter}, ${dataTypeFilter}`);
-        }
 
         // Initialize Overview Charts
         function initializeOverviewCharts() {
